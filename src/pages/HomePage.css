@@ -1,75 +1,103 @@
-Header {
-  background-color: var(--bgcolor);
-  min-height: 100vh;
-  width: 100%;
+.body{
+  display: grid;
+  grid-template-columns: 250px auto 50px;
 }
-
-.main-hero-container {
+.emailPage {
   display: flex;
-  background-color: #f1f5fd;
+  flex-direction: column;
+  border-bottom: 2px solid whitesmoke;
+  padding: 10px;
+  margin-top: 2rem;
+  margin-left: 2rem;
 }
 
-.main-hero-container h3 {
-  text-transform: capitalize;
-  font-weight: bold;
-  font-size: 3rem;
-}
-
-.main-hero-para {
-  font-size: 1.1rem;
-  color: var(--text-color);
-  margin: 2.5rem 0 1.5rem 0;
-  width: 85%;
-}
-
-/* right side of hero section */
-.main-herosection-images {
+.emailItem {
   position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
 }
 
-.main-herosection-images img {
-  width: 55%;
-  height: 80%;
-  margin-top: 4rem;
-  box-shadow: 0 0.8rem 0.8rem rgba(0, 0, 0, 0.25);
-  border-radius: 1.5rem;
+.emailItem:hover {
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.emailContent {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.emailContent .mailtext {
+  font-size: 14px;
+  margin-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.emailId{
+  font-size: 19px;
+  font: bolder;
+  margin-right: 70px;
+}
+.emailDetail {
+  display: flex;
+  align-items: center;
+}
+
+.email_subject {
+  margin-right: 10px;
+  font-size: 19px;
+  font: bolder;
+}
+.deleteIcon {
   position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  visibility: hidden; /* Hide delete icon by default */
 }
 
-.main-herosection-images .main-hero-img2 {
-  position: absolute;
-  width: 30%;
-  height: 35%;
-  left: 65%;
-  top: -15%;
-  box-shadow: 0.8 0rem 0.8rem rgba(0, 0, 0, 0.25);
+.emailItem:hover .deleteIcon {
+  visibility: visible; /* Show delete icon when hovering over email item */
+}
+/**-----------------------MailDetail-------------------------------------------*/
+
+.maildetail{
+  display: flex;
+  flex-direction: column;
+  flex: 90%;
+  margin-left: 200px;
+  border-bottom: 2px solid whitesmoke;
+  padding: 0 10px;
+  height: 40px;
+  margin-top: 2rem;
+}
+.maildetail_header{
+  display: flex;
+  margin: 10px 0px;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-bottom: 2px solid whitesmoke;
+}
+.maildetail_middleHeader{
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.maildetail_options{
+  cursor: pointer;
 }
 
-.work-container {
-  width: 75vw;
-  padding: 3rem 0.5rem;
-  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
-  margin-top: -9rem;
-  background-color: #fff;
-  border-radius: 0.5rem;
-}
-
-.work-container-subdiv:hover {
-  background-color: #e1ebea;
-}
-
-.work-container .main-heading {
-  font-size: 3rem;
-  font-weight: bolder;
-  margin-bottom: 6rem;
-  word-spacing: 1rem;
-}
-
-.work-container-subdiv {
-  padding: 0.4rem;
-}
-
-.work-container .sub-heading {
-  font-size: 1.6rem;
-  font-weight: normal;
+.emailPage_left,
+.emailPage_mid,
+.emailPage_right {
+  /* Remove flex property from these elements */
+  flex: none;
+  /* Optionally, you can add padding to provide spacing between elements */
+  padding: 5px;
 }

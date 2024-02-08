@@ -1,0 +1,13 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+}
+.compose_btn{
+    padding: 10px 20px !important;
+    border-radius: 40px !important;
+    box-shadow: 2px 2px 3px #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    max-width: 150px;
+}

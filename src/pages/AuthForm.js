@@ -92,8 +92,8 @@ const AuthForm = () => {
       }
       const data = await response.json();
       console.log(data);
-      dispatch(authActions.login({token: data.idToken, userId: data.localId}));
-      history.replace('./');
+      dispatch(authActions.login({token: data.idToken, userId: data.localId, userEmail: data.email}));
+      history.replace('./mail/inbox');
       //{login && authCxt.isLoggedIn ? authCxt.sendVerification() : history.replace('/')};//first we verfied user id by sending mail used firebase api in authcontext
 
     } catch (error) {
