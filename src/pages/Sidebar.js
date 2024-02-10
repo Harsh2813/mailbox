@@ -14,8 +14,7 @@ import { NavLink } from "react-router-dom";
 const Sidebar = () => {
 
   const dispatch = useDispatch();
-  const totalInbox = useSelector((state) => state.mail.totalInbox);
-  const totalSent = useSelector((state) => state.mail.totalSent);
+  const unreadInbox = useSelector((state) => state.mail.unreadInbox);
 
   return (
     <>
@@ -24,8 +23,8 @@ const Sidebar = () => {
           <GoPlus />
           Compose
         </Button>
-        <NavLink to='/mail/inbox'><SidebarOptions Icon={BiSolidInbox} title='inbox' total={totalInbox}/></NavLink>
-        <NavLink to='/mail/sent'><SidebarOptions Icon={BiSend } title='sent' total={totalSent}/></NavLink>
+        <NavLink to='/mail/inbox'><SidebarOptions Icon={BiSolidInbox} title='inbox' total={unreadInbox}/></NavLink>
+        <NavLink to='/mail/sent'><SidebarOptions Icon={BiSend } title='sent'/></NavLink>
         <SidebarOptions Icon={IoDocumentOutline} title='draft'/>
         <SidebarOptions Icon={BiLogOut} title='Logout'/>
       </div>

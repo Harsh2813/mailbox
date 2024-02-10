@@ -13,6 +13,7 @@ const App = () => {
 
   let trimmedUserEmail = userEmail.replace(/[@.]/g, '');
 
+  let reload = true;
   useEffect(() => {
     const fetchInboxMailHandler = async () => {
       console.log("useEffect fetchInboxMailHandler triggered!!!");
@@ -25,7 +26,11 @@ const App = () => {
         }
         const data = await response.json();
         console.log(data);
+        let totalUnread = 0;
         for (let key in data) {
+          if(!data[key].read){
+            totalUnread++;
+          }
           dispatch(
             mailActions.inboxMail({
               id: key,
@@ -35,6 +40,7 @@ const App = () => {
             })
           );
         }
+        dispatch(mailActions.totalUnreadInbox(totalUnread));
       } catch (error) {
         console.log(error);
       }

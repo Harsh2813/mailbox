@@ -6,4 +6,5 @@ const store = configureStore({
     reducer: {auth: AuthReduecr, mail: MailReducer},
 });
 
+
 export default store;
