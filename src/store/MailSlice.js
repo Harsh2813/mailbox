@@ -28,7 +28,7 @@ const MailSlice = createSlice({
       state.sent.push(action.payload);
     },
     inboxMail(state, action) {
-      state.inbox.push(action.payload);
+      state.inbox = action.payload;
     },
 
     totalUnreadInbox(state, action){

@@ -18,6 +18,17 @@
   padding: 10px 0;
   border-bottom: 1px solid #ddd;
 }
+.emailItem.unread::before {
+  content: '';
+  position: absolute;
+  left: -30px; /* Adjust the positioning of the dot */
+  top: 40%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: blue; /* Adjust the color of the dot */
+}
 .emailItem.unread .emailText,
 .emailItem.unread .email_subject,
 .emailItem.unread .emailId {
@@ -66,6 +77,9 @@
 .emailItem:hover .deleteIcon {
   visibility: visible; /* Show delete icon when hovering over email item */
 }
+.email_timestamp{
+  margin-left: 25rem;
+}
 /**-----------------------MailDetail-------------------------------------------*/
 
 .maildetail{
@@ -87,13 +101,14 @@
   margin: 10px 40px;
   display: flex;
   align-items: center;
-  font-size: 19px;
+  margin-bottom: 10px;
+  font-size: 16px;
   font-weight: bold;
   justify-content: space-between;
 }
 .maildetail_options{
   cursor: pointer;
-  word-spacing: 200px;
+  border-bottom: 2px solid rgb(243, 238, 238);
 }
 .maildetail_body{
   margin: 10px 40px;
@@ -109,4 +124,14 @@
   flex: none;
   /* Optionally, you can add padding to provide spacing between elements */
   padding: 5px;
+}
+.mailBody {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.maildetail_body p {
+  margin: 10px 0;
 }

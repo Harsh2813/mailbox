@@ -35,6 +35,7 @@ const HomePage = () => {
               to: data[key].to,
               subject: data[key].subject,
               mail: data[key].mail,
+              timestamp: data[key].timestamp
             })
           );
         }
