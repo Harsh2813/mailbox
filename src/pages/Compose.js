@@ -70,7 +70,8 @@ const Compose = () => {
                 value={subject}
               />
               <textarea
-                rows="18"
+                rows="13"
+                placeholder="if compose section is not visible properly please decrease you screen zoom"Z
                 onChange={(e) => setMailText(e.target.value)}
                 value={mailText}
               />

@@ -9,6 +9,8 @@ const initialMailState = {
   unreadInbox: parseInt(initalinbox),
   inbox: [],
   activeOption: "inbox", //we will be having default inbox sidebar content
+  searchQuery: '',
+  sidebar: true,
 };
 
 const MailSlice = createSlice({
@@ -42,6 +44,10 @@ const MailSlice = createSlice({
       state.activeOption = "inbox";
     },
 
+    updateSearchQuery(state, action) {
+      state.searchQuery = action.payload;
+    },
+
     deleteMail(state, action) {
       state.sent = state.sent.filter((mail) => mail.id !== action.payload);
       state.inbox = state.inbox.filter((mail) => mail.id !== action.payload);
@@ -52,6 +58,9 @@ const MailSlice = createSlice({
     deleteSent(state) {
       state.sent = [];
     },
+    showSidebar(state){
+      state.sidebar = !state.sidebar;
+    }
   },
 });
 

@@ -15,6 +15,7 @@ const HomePage = () => {
   const composeShow = useSelector((state) => state.mail.compose);
   const isAuth = useSelector((state) => state.auth.isLoggedIn);
   const userId = useSelector((state) => state.auth.userId);
+  const sidebar = useSelector((state) => state.mail.sidebar);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const HomePage = () => {
     <>
       <Header />
       <div className="body">
-        <Sidebar />
+        {sidebar && <Sidebar />}
         <Switch>
           <Route path="/mail/:mailbox/:mailId">
             <MailDetail />

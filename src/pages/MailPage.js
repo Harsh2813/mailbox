@@ -7,6 +7,8 @@ import { mailActions } from "../store/MailSlice";
 import useFetchInbox from "../component/Hooks/useFetchInbox";
 
 const MailPage = ({ emails, active }) => {
+  const [filteredEmails, setFilteredEmails] = useState(emails);
+
   const [readStatus, setReadStatus] = useState(
     JSON.parse(localStorage.getItem("readStatus")) || {}
   ); //we using this state just for checking if mail is unread then it should be bold otherwise normal aftre inbox read so we taken object for setting mail to true by its id
@@ -14,8 +16,17 @@ const MailPage = ({ emails, active }) => {
   const dispatch = useDispatch();
   const userEmail = useSelector((state) => state.auth.userEmail);
   const userId = useSelector((state) => state.auth.userId);
+  const searchQuery = useSelector((state) => state.mail.searchQuery);
 
-  const fetchUnreadMailHandler = useFetchInbox();//calling custom hook for fetching Total unread email also, we have to define hooks outside of anyother fn and its return value have to take like this
+  useEffect(() => {
+    // Filter emails based on the search query
+    const filtered = emails.filter((email) =>
+      email.mail.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredEmails(filtered);
+  }, [searchQuery, emails]);
+
+  const fetchUnreadMailHandler = useFetchInbox(); //calling custom hook for fetching Total unread email also, we have to define hooks outside of anyother fn and its return value have to take like this
 
   let trimmedUserEmail = userEmail.replace(/[@.]/g, "");
 
@@ -54,7 +65,7 @@ const MailPage = ({ emails, active }) => {
           throw new Error("Error in deleting");
         }
       }
-      if(active === 'inbox'){
+      if (active === "inbox") {
         await fetch(
           `https://mailbox-760f6-default-rtdb.firebaseio.com/${trimmedUserEmail}/mail/${id}.json`,
           {
@@ -71,29 +82,36 @@ const MailPage = ({ emails, active }) => {
   return (
     <>
       <div className="emailPage">
-        {emails && emails.map((email) => (
-          <div
-            key={email.id}
-            className={`emailItem ${
-              active === "inbox" && !readStatus[email.id] ? "unread" : ""
-            }`}
-            onClick={() => mailClickHandler(email)}
-          >
-            <div className="emailDetail">
-              {active === "sent" ? (
-                <p className="emailId">{email.to}</p>
-              ) : (
-                <p className="emailId">{email.from}</p>
-              )}
+        
+        {emails.length<1? <h1 style={{textAlign: 'center'}}>No Mails to show here!!</h1> : emails &&
+          filteredEmails.map((email) => (
+            <div
+              key={email.id}
+              className={`emailItem ${
+                active === "inbox" && !readStatus[email.id] ? "unread" : ""
+              }`}
+              onClick={() => mailClickHandler(email)}
+            >
+              <div className="emailDetail">
+                {active === "sent" ? (
+                  <p className="emailId">{email.to}</p>
+                ) : (
+                  <p className="emailId">{email.from}</p>
+                )}
+
+                <p className="email_subject">{email.subject} -</p>
+                <p className="mailText">{email.mail}</p>
+                <p className="email_timestamp">
+                  {new Date(email.timestamp).toLocaleString()}
+                </p>
+              </div>
+              <div className="deleteIcon">
+                <RiDeleteBinLine
+                  onClick={(event) => deleteMailHandler(email.id, event)}
+                />
+              </div>
             </div>
-            <p className="email_subject">{email.subject} - </p>
-            <p className="mailText">{email.mail}</p>
-            <p className="email_timestamp">{new Date(email.timestamp).toLocaleString()}</p>
-            <div className="deleteIcon">
-            <RiDeleteBinLine onClick={(event) => deleteMailHandler(email.id, event)} />
-            </div>
-          </div>
-        ))}
+          ))}
       </div>
     </>
   );

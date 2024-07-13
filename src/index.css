@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Ensure proper viewport scaling
+@viewport {
+  width: device-width;
+  zoom: 1.0;
+}
+
+/* Set initial scale to 1 */
+/* html {
+  zoom: 1.0;
+}
+
+/* Ensure content fits within the viewport */
+/* body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+/* }*/ 

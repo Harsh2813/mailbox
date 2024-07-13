@@ -1,4 +1,4 @@
-.sidebarOptions{
+.sidebarOptions {
     display: flex;
     align-items: center;
     height: 35px;
@@ -6,33 +6,108 @@
     border-bottom-right-radius: 20px;
     padding: 0 25px;
     margin-right: 20px;
-}
-.sidebarOptions h4{
+    transition: background-color 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  .sidebarOptions h4 {
     font-size: 14px;
     flex: 1;
     margin-left: 10px;
     font-weight: normal;
-}
-.sidebarOptions p {
+  }
+  
+  .sidebarOptions p {
     opacity: 1;
     color: rgb(1, 0, 0);
     font-size: 15px;
     margin-top: 10px;
-}
-.sidebarOptions svg {
+  }
+  
+  .sidebarOptions svg {
     color: rgb(23, 22, 22);
     font-size: 20px;
     width: 20px;
-}
-.sidebarOptions_active{
+  }
+  
+  .sidebarOptions_active {
     background-color: lightblue;
-}
-.sidebarOptions:hover{
+  }
+  
+  .sidebarOptions:hover {
     cursor: pointer;
     background-color: whitesmoke;
-}
-.sidebarOptions_active h4{
+  }
+  
+  .sidebarOptions_active h4 {
     color: black;
     font-weight: bold;
     opacity: 1 !important;
-}
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1024px) {
+    .sidebarOptions {
+      padding: 0 20px;
+      margin-right: 15px;
+    }
+  
+    .sidebarOptions h4 {
+      font-size: 13px;
+      margin-left: 8px;
+    }
+  
+    .sidebarOptions p {
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  
+    .sidebarOptions svg {
+      font-size: 18px;
+      width: 18px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sidebarOptions {
+      padding: 0 15px;
+      margin-right: 10px;
+    }
+  
+    .sidebarOptions h4 {
+      font-size: 12px;
+      margin-left: 6px;
+    }
+  
+    .sidebarOptions p {
+      font-size: 13px;
+      margin-top: 6px;
+    }
+  
+    .sidebarOptions svg {
+      font-size: 16px;
+      width: 16px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .sidebarOptions {
+      padding: 0 10px;
+      margin-right: 5px;
+    }
+  
+    .sidebarOptions h4 {
+      font-size: 11px;
+      margin-left: 4px;
+    }
+  
+    .sidebarOptions p {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  
+    .sidebarOptions svg {
+      font-size: 14px;
+      width: 14px;
+    }
+  }
+  

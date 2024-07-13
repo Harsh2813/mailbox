@@ -2,13 +2,25 @@ import React from "react";
 import { FaBars } from "react-icons/fa";
 import { GoSearch } from "react-icons/go";
 import "./Header.css";
+import { useDispatch } from "react-redux";
+import { mailActions } from "../store/MailSlice";
 
 const Header = () => {
+
+  const dispatch = useDispatch();
+
+  const handleSearchInputChange = (event) => {
+    dispatch(mailActions.updateSearchQuery(event.target.value));
+  };
+  const showBarHandler = () =>{
+    dispatch(mailActions.showSidebar());
+  }
+
   return (
     <>
       <div className="header">
         <div className="header_left">
-          <FaBars />
+          <FaBars className="bars" onClick={showBarHandler}/>
           <img
             className="img"
             src="../../images/gmail.png"
@@ -24,7 +36,8 @@ const Header = () => {
           <input
             className="header_input"
             type="text"
-            placeholder="search mail"
+            placeholder="search mail by your mail message(text)"
+            onChange={handleSearchInputChange}
           />
         </div>
       </div>
